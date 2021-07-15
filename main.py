@@ -1,94 +1,91 @@
-import numpy  # biblioteca usada para fazer a media dos valores presentes na lista
-import math  # biblioteca de funcoes matematicas, usado para fazer a raiz
+import numpy  # https://numpy.org/
+import math  # https://docs.python.org/3.8/library/math.html
 
 
-def lerListaNumero():
-    print("Digite os valores a serem analizados em apenas uma linha: ")
-    listaNumero = input().split()
-
-    return listaNumero
+print("Enter numbers on one line: ")
+listNumber = input().split()
 
 
-def converterLista(listaNumero):
-    listaNumero = list(map(int, listaNumero))  # converter uma lista strings em inteiros
 
-    return listaNumero
+def convertList(listNumber):
+    listNumber = list(map(int, listNumber))  # convert list string in int
 
-
-def quantidadeNumero(listaNumero):
-    quantidadeNumero = len(listaNumero)
-
-    return quantidadeNumero
+    return listNumber
 
 
-def mediaLista(listaNumero):
-    mediaLista = numpy.mean(listaNumero)
+def lengthList(listNumber):
+    lengthList = len(listNumber)
 
-    return mediaLista
-
-
-def listaComMedia(mediaLista, quantidadeNumero):
-    listaComMedia = []
-
-    while quantidadeNumero > 0:
-        listaComMedia.append(mediaLista)
-        quantidadeNumero = quantidadeNumero - 1
-
-    return listaComMedia
+    return lengthList
 
 
-def listaNumeroMenosMedia(listaNumero, listaComMedia):  # fazer a lista numero menos a lista de media
-    listaNumeroMenosMedia = []
+def averageList(listNumber):
+    averageList = numpy.mean(listNumber)
 
-    listaNumeroMenosMedia = [(a - b) for a, b in zip(listaNumero, listaComMedia)]
-
-    return listaNumeroMenosMedia
+    return averageList
 
 
-def listaNumeroMenosMediaAoQuadrado(listaNumeroMenosMedia):
-    listaNumeroMenosMediaAoQuadrado = []
+def listAverage(averageList, lengthList): # this creat a list with only average
+    listAverage = []
 
-    listaNumeroMenosMediaAoQuadrado = [(a * b) for a, b in zip(listaNumeroMenosMedia, listaNumeroMenosMedia)]
+    while lengthList > 0:
+        listAverage.append(averageList)
+        lengthList = lengthList - 1
 
-    return listaNumeroMenosMediaAoQuadrado
-
-
-def somaLista(listaNumeroMenosMediaAoQuadrado):
-    somaLista = sum(listaNumeroMenosMediaAoQuadrado)
-
-    return somaLista
+    return listAverage
 
 
-def dividirSomaPorQuantidadeNumero(somaLista, quantidadeNumero):
-    dividirSomaPorQuantidadeNumero = somaLista / (quantidadeNumero - 1)
+def listNumberMinusAverage(listNumber, listAverage):  # code use this list to creat a list with: (number(n) - average)
+    listNumberMinusAverage = []
 
-    return dividirSomaPorQuantidadeNumero
+    listNumberMinusAverage = [(a - b) for a, b in zip(listNumber, listAverage)]
 
-
-def desvioPadrao(dividirSomaPorQuantidadeNumero):
-    desvioPadrao = math.pow(dividirSomaPorQuantidadeNumero, 1 / 2)
-
-    return desvioPadrao
+    return listNumberMinusAverage
 
 
-listaNumero = lerListaNumero()
+def listNumberMinusAverageSquared(listNumberMinusAverage):
+    listNumberMinusAverageSquared = []
 
-listaNumero = converterLista(listaNumero)
+    listNumberMinusAverageSquared = [(a * b) for a, b in zip(listNumberMinusAverage, listNumberMinusAverage)]
 
-quantidadeNumero = quantidadeNumero(listaNumero)
+    return listNumberMinusAverageSquared
 
-mediaLista = mediaLista(listaNumero)
 
-listaComMedia = listaComMedia(mediaLista, quantidadeNumero)
+def sumList(listNumberMinusAverageSquared):
+    sumList = sum(listNumberMinusAverageSquared)
 
-listaNumeroMenosMedia = listaNumeroMenosMedia(listaNumero, listaComMedia)
+    return sumList
 
-listaNumeroMenosMediaAoQuadrado = listaNumeroMenosMediaAoQuadrado(listaNumeroMenosMedia)
 
-somaLista = somaLista(listaNumeroMenosMediaAoQuadrado)
+def sumListDividedAverage(sumList, averageList):
+    sumListDividedAverage = sumList / (averageList - 1)
 
-dividirSomaPorQuantidadeNumero = dividirSomaPorQuantidadeNumero(somaLista, quantidadeNumero)
+    return sumListDividedAverage
 
-desvioPadrao = desvioPadrao(dividirSomaPorQuantidadeNumero)
 
-print("desvio padrao: %0.5f" % desvioPadrao)
+def standardDeviation(sumListDividedAverage):
+    standardDeviation = math.pow(sumListDividedAverage, 1 / 2)
+
+    return standardDeviation
+
+
+
+listNumber = convertList(listNumber)
+
+lengthList = lengthList(listNumber)
+
+averageList = averageList(listNumber)
+
+listAverage = listAverage(averageList, lengthList)
+
+listNumberMinusAverage = listNumberMinusAverage(listNumber, listAverage)
+
+listNumberMinusAverageSquared = listNumberMinusAverageSquared(listNumberMinusAverage)
+
+sumList = sumList(listNumberMinusAverageSquared)
+
+sumListDividedAverage = sumListDividedAverage(sumList, averageList)
+
+standardDeviation = standardDeviation(sumListDividedAverage)
+
+print("The standard deviation: %0.5f" % standardDeviation)
