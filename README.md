@@ -1,6 +1,6 @@
 # standard deviation
 
-Is a python script to performer the standard deviation
+Is a python script to performer the standard deviation for statistic
 
 to use it, type a list of numbers and click enter.
 
