@@ -2,7 +2,7 @@ import numpy  # https://numpy.org/
 import math  # https://docs.python.org/3.8/library/math.html
 
 
-print("Enter numbers on one line: ")
+print("Enter numbers in  line: ")
 listNumber = input().split()
 
 
