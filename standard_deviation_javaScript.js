@@ -1,32 +1,31 @@
-function desvioPadrao (lista){
+function standardDeviation (list){
 
-    let listaSplit = lista.split(" ");
-    
-    let listaInt = listaSplit.map(Number);
-    
-    let media = listaInt.reduce((soma, valor) => soma += valor, 0) / listaInt.length;
-    
-    let listaMenosMedia = listaInt.map(num => {
-        return num - media;
+    let listSplit = list.split(" ");
+
+    let listInt = listSplit.map(Number);
+
+    let average = listInt.reduce((sum, value) => sum += value, 0) / listInt.length;
+
+    let listMinusAverage = listInt.map(num => {
+        return num - average;
     });
-    
-    let listaQuadrado = listaMenosMedia.map(num => {
+
+    let listSquared = listMinusAverage.map(num => {
         return num ** 2;
     });
-    
-    let somaLista = listaQuadrado.reduce((soma, valor) => soma += valor, 0);
-    
-    let somaListaSobQuantidade = somaLista / (listaInt.length - 1);
-    
-    let raiz = Math.sqrt(somaListaSobQuantidade);
-    
-    //console.log(raiz.toFixed(3));
-    
-    return raiz
-    }
-    
-    let lista = "1 2 3 4 5 6 7 8 9 10";
-    
-    let desvio = desvioPadrao(lista)
-    
-    console.log(desvio.toFixed(4))
+
+    let sumList = listSquared.reduce((sum, value) => sum += value, 0);
+
+    let sumListDividedRageList = sumList / (listInt.length - 1);
+
+    let standardDeviation = Math.sqrt(sumListDividedRageList);
+
+    return standardDeviation
+}
+
+
+let list = "1 2 3 4 5 6 7 8 9 10";
+
+let result = standardDeviation(list)
+
+console.log(result.toFixed(4))
