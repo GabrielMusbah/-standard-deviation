@@ -1,6 +1,6 @@
 # standard deviation
 
-Is a python script to calculate the standard deviation in statistic
+Is a script in python and javaScript to calculate the standard deviation in statistic
 
 to use it, type a list of numbers and click enter.
 
